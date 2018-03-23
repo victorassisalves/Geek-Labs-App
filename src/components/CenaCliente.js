@@ -7,7 +7,8 @@ import {
     Image,
     Platform,
     TouchableOpacity,
-    Icon
+    Icon,
+    ScrollView
 } from 'react-native';
 import { Container, Header, Content } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -19,6 +20,9 @@ import CenaPrincipal from './CenaPrincipal';
 const Iesb = require('../imgs/iesb.png');
 const IesbLab = require('../imgs/iesbLab.png');
 const Time2Goal = require('../imgs/time2goal.png');
+const MuscleFormula = require('../imgs/muscleformula.png');
+const NatureInvest = require('../imgs/natureinvest.png');
+const AcquaFarm = require('../imgs/acquafarm.png');
 
 export default class CenaClientes extends Component{
     static navigationOptions = {
@@ -31,9 +35,14 @@ export default class CenaClientes extends Component{
           },
           headerTitleStyle: {
             fontWeight: 'bold',
+            color: '#fff',
             fontSize: 18,
             textAlign: 'center',
           },
+          headerBackTitleStyle: {
+            color: '#2A5DB0',
+        },
+        headerTintColor: '#fff',
           
         /* No more header config here! */
     };
@@ -46,9 +55,9 @@ export default class CenaClientes extends Component{
                 />
                 
                 <Container >
-
+                <ScrollView>
                 {/* Área de parceiros */}
-                        <Header >
+                        <Header style={CenaClienteStyle.headerStyle}>
                             <Content>
                                 <Grid>
                         
@@ -60,7 +69,8 @@ export default class CenaClientes extends Component{
                             </Content>
                         </Header>
                     
-                        <Container style={CenaClienteStyle.menuGrupo}>
+                        <Grid style={CenaClienteStyle.menuGrupo}>
+                            {/* Parceiros */}
                                 <View style={CenaClienteStyle.imgView}>
                                     <View >
                                         <Image source={Iesb} style={CenaClienteStyle.imgStyle}/>
@@ -74,12 +84,11 @@ export default class CenaClientes extends Component{
                                     </View>
                                         
                                 </View>
-                        </Container>
+                        </Grid>
 
 
-                        {/* Área de plientes */}
-                        
-                        <Header >
+                        {/* Área de clientes */}
+                        <Header style={CenaClienteStyle.headerStyle} >
                             <Content>
                                 <Grid>
                         
@@ -90,42 +99,44 @@ export default class CenaClientes extends Component{
                                 </Grid>
                             </Content>
                         </Header>
+                        
                             
                          {/* row 1    */}
-                        <Container style={CenaClienteStyle.menuGrupo}>
+                        <Grid style={CenaClienteStyle.menuGrupo}>
                                 <View style={CenaClienteStyle.imgView}>
-                                    <View >
-                                        <Image source={Time2Goal} style={CenaClienteStyle.imgStyle}/>
+                                    <View style={CenaClienteStyle.imgStyle}>
+                                        <Image source={Time2Goal} />
                                     </View>
                                         
                                 </View>
                                     
                                 <View style={CenaClienteStyle.imgView}>
-                                    <View >
-                                        <Image source={IesbLab} style={CenaClienteStyle.imgStyle}/>
+                                    <View style={CenaClienteStyle.imgStyle}>
+                                        <Image source={MuscleFormula} />
                                     </View>
                                         
                                 </View>
-                        </Container>
+                        </Grid>
 
 
                         {/* row 2 */}
-                        <Container style={CenaClienteStyle.menuGrupo}>
+                        <Grid style={CenaClienteStyle.menuGrupo}>
                                 <View style={CenaClienteStyle.imgView}>
                                     <View >
-                                        <Image source={Iesb} style={CenaClienteStyle.imgStyle}/>
+                                        <Image source={NatureInvest} />
                                     </View>
                                         
                                 </View>
                                     
                                 <View style={CenaClienteStyle.imgView}>
-                                    <View >
-                                        <Image source={IesbLab} style={CenaClienteStyle.imgStyle}/>
+                                    <View style={CenaClienteStyle.imgStyle}>
+                                        <Image source={AcquaFarm} />
                                     </View>
                                         
                                 </View>
-                        </Container>
-
+                        </Grid>
+                        
+                        </ScrollView>
 
                 </Container>
 
@@ -141,10 +152,15 @@ const CenaClienteStyle = StyleSheet.create({
         backgroundColor: '#fff',
         flex: 1
     },
+    headerStyle: {
+        backgroundColor: '#c1c1c1',
+        overflow: 'hidden',
+    },
     viewCabecalho:{
         flexDirection: 'row',
         marginBottom: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        
     },
     txtTitulo:{
         fontSize: 30,
@@ -162,13 +178,24 @@ const CenaClienteStyle = StyleSheet.create({
     imgView:{
         alignItems: 'center',
         alignSelf: 'center',
-        width: '50%'
+        alignContent: 'center',
+        width: '50%',
+    },
+    imgStyle:{
+        padding: 10
+    },
+    rowParceiros:{
+        height: 150,
+    },
+    rowClientes:{
+
     },
     menuGrupo:{
         flexDirection: 'row',
         marginTop: 15,
         marginBottom: 15,
-        alignItems: 'center'
+        alignItems: 'center',
+        alignContent: 'center',
     }
 
 });

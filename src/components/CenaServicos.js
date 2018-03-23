@@ -5,8 +5,11 @@ import {
     StyleSheet,
     StatusBar,
     Image,
-    Platform
+    Platform,
+    ScrollView
 } from 'react-native';
+import {Card, CardItem, Body, Container, Content} from 'native-base';
+
 import BarraNavegacao from './BarraNavegacao';
 import CenaPrincipal from './CenaPrincipal';
 
@@ -15,7 +18,7 @@ const Web = require('../imgs/responsive.png');
 
 export default class CenaServicos extends Component{
     static navigationOptions = {
-        // title: 'Geek Labs',
+        title: 'Serviços',
         headerStyle: {
             backgroundColor: '#20232c',
             height: 60,
@@ -27,6 +30,10 @@ export default class CenaServicos extends Component{
             fontSize: 18,
             textAlign: 'center',
           },
+          headerBackTitleStyle: {
+            color: '#2A5DB0',
+        },
+        headerTintColor: '#fff',
         
         /* No more header config here! */
     };
@@ -38,26 +45,57 @@ export default class CenaServicos extends Component{
                     backgroundColor='#20232c'
                 />
                 <View style={CenaServicosStyle.viewCabecalho}>
-                    <Text style={CenaServicosStyle.txtTitulo}>Nossos Serviços</Text>
+                    <Text style={CenaServicosStyle.txtTitulo}>Produtos & Serviços</Text>
                 </View>
 
-                <View >
-                    <View style={CenaServicosStyle.viewServicos}>
-                        <Image source={Mobile} style={CenaServicosStyle.imgStyle}/>
-                        <Text style={CenaServicosStyle.title}>Criação de Aplicativos</Text>
-                    </View>
-                    
-                    <Text style={CenaServicosStyle.txtServicos}>Desenvolvemos aplicativos para as plataformas Android e Iphone, gerando para nossos clientes a praticidade de ter seu negócio funcionando na palma de suas mãos.</Text>
-                </View>
+               
 
-                <View >
-                    <View style={CenaServicosStyle.viewServicos}>
-                        <Image source={Web} style={CenaServicosStyle.imgStyle}/>
-                        <Text style={CenaServicosStyle.title}>Criação de Sites</Text>
-                    </View>
-                    
-                    <Text style={CenaServicosStyle.txtServicos}> Todos os sites são responsivos (cabem perfeitamente na tela de qualquer aparelho), tem a estratégia de SEO (otimização dos mecanismos de busca) pronta e está preparado para a implementação de estratégias de Inbound Marketing.</Text>
-                </View>
+
+
+
+
+
+
+
+            <Container>
+                <Content>
+                <ScrollView>
+                {/* Servicos de App */}
+                    <Card>
+                        <CardItem>
+
+                            <Body>
+                                <View style={CenaServicosStyle.viewServicos}>
+                                    <Image source={Mobile} style={CenaServicosStyle.imgStyle}/>
+                                    <Text style={CenaServicosStyle.title}>Criação de Aplicativos</Text>
+                                </View>
+                                    
+                                <Text style={CenaServicosStyle.txtServicos}>Desenvolvemos aplicativos para as plataformas Android e Iphone, gerando para nossos clientes a praticidade de ter seu negócio funcionando na palma de suas mãos.</Text>
+                            </Body>
+
+                        </CardItem>
+                    </Card>
+
+
+                {/* Servicos de Sites */}
+                    <Card>
+                        <CardItem>
+                            
+                            <Body>
+                                <View style={CenaServicosStyle.viewServicos}>
+                                    <Image source={Web} style={CenaServicosStyle.imgStyle}/>
+                                    <Text style={CenaServicosStyle.title}>Criação de Sites</Text>
+                                </View>
+                            
+                                <Text style={CenaServicosStyle.txtServicos}> Todos os sites são responsivos (cabem perfeitamente na tela de qualquer aparelho), tem a estratégia de SEO (otimização dos mecanismos de busca) pronta e está preparado para a implementação de estratégias de Inbound Marketing.</Text>
+                            </Body>
+
+                        </CardItem>
+                    </Card>
+
+                    </ScrollView>
+                </Content>
+            </Container>
 
                 
             </View>
@@ -79,7 +117,7 @@ const CenaServicosStyle = StyleSheet.create({
     },
     txtTitulo:{
         fontSize: 30,
-        color: '#b9c941',
+        color: '#e4020b',
         fontWeight: 'bold',
         marginLeft: 10,
         alignSelf: 'center'
